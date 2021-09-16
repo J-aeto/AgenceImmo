@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Gérer les biens'%}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Gérer les biens</h2>
+        
+
+        <table class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for property in properties %}
+                <tr>
+                    <td>{{ property.title }}</td>
+                    <td>
+                        <a class="btn btn-secondary" href="{{ path('admin.property.edit', {id: property.id}) }}">Editer</a>
+                        <a class="btn btn-danger" href="{{ path('admin.property.delete', {id: property.id}) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-right">
+            <a href="{{ path('admin.property.new')}}" class="btn btn-primary">Créer un nouveau bien</a>
+        </div>
+    </div>
+   
+{% endblock %}
